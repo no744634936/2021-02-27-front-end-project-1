@@ -216,6 +216,7 @@ option标签只有在firefox中有默认的padding-left：3px；
      text-align: center;
      padding: 1rem;
      margin: 0.5rem;
+     display: inline-block;
      /* 先写好布局然后再定宽高 */
      /* 
         这个30%是相对父容器来说的
@@ -259,12 +260,6 @@ option标签只有在firefox中有默认的padding-left：3px；
     list-style-type:none;
     margin: 0;
     padding: 0;
-}
-
-@media(min-width:40rem){
-    .plan{
-        display: inline-block;
-    }
 }
 
 .plan_features li{
