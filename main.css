@@ -1,0 +1,443 @@
+
+#product-overview {
+    /* background:url("freedom.jpg"); */
+    background-image:url("freedom.jpg");
+    /* background-size经常用的两参数是cover跟contain */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* 调整背景图片中心的位置，着重显示图片的哪一个地方 */
+    background-position: center;
+    /* background-position: left 10% bottom 20%; */
+    /* background-position: center; */
+
+    /*查看background-origin 跟 background-clip的区别 https://www.jianshu.com/p/c9648f45064b */
+    background-origin: border-box;
+    background-clip: border-box;
+
+    width: 100vw;
+    height: 40vh;
+    margin-top: 3.2rem;
+    position: relative;
+    
+}
+
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    margin:0;
+    font-size: 1.4rem;
+}
+
+/* 大于40x*16=640px 时候触发*/
+@media(min-width:40rem){
+    /* 40x*16=640px 之后h1变大 */
+    #product-overview {
+        height: 45vh;
+        background-position:50% 20%
+   }
+    /* 40x*16=640px 之后h1变大 */
+    #product-overview h1 {
+        font-size: 2rem;
+    }
+}
+
+
+
+.section-title {
+    color: #2ddf5c;
+    text-align: center;
+}
+
+.main-header{
+    width:100%;
+    background: #2ddf5c;
+    padding:0.5rem 1rem;
+    /* 固定header的navigation bar,以后这样写就行了 */
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+.main-header__brand{
+    /* 去掉下划线 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color:black;
+    display: inline-block;
+    height: 2rem;
+}
+
+.main-header__brand img{
+    /* 
+        100%表示的是container Atag的高 但是img并不会在意a tag的高和宽
+        在Atag(main-header__brand class)里面添加 display:inline-block;
+        img tag就会在意Atag的高跟宽了
+    */
+    height:100%
+}
+
+.main-nav__item{
+    /* inline-block要素はinline要素のようなものだ。だが、widthとheight,margin,paddingを持つ事ができる */
+    display:inline-block;
+    margin:0 1rem;
+}
+
+.main-nav__items{
+    /* 去掉ul的margin跟padding */
+    margin:0;
+    padding:0;
+    /* 去掉list的各种默认属性 */
+    list-style-type:none;
+}
+
+.main-header>div{
+    display: inline-block;
+    /* 垂直对齐 */
+    vertical-align: middle;
+}
+.main-header>nav{
+    display: inline-block;
+    /* 垂直对齐 */
+    vertical-align: middle;
+    /* inline element里面的内容会被当做text，所以就可以用text-align来对齐了 */
+    text-align: right;
+    /* uHost的宽度是68.55 所以我再这里减去75。减号前后必须要有空格*/
+    width:calc(100% - 75px); 
+}
+
+.main-nav__items a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    padding:3px 0;
+    
+}
+
+/* .main-nav__items a:hover{ */
+    /* 滑过atag的时候 */
+    /* color:white; */
+/* } */
+/* .main-nav__items a:active{ */
+    /* 点击atag的时候 */
+    /* color:white; */
+/* } */
+
+.main-nav__items a:hover,
+.main-nav__items a:active{
+    color:white;
+    /*因为文字跟border的线太近了，所以要使用padding:3px 0; */
+    border-bottom: 2px solid white;
+}
+
+.main-nav__item--cta a{
+    color:white;
+    background: #ff1b68;
+    padding:0.5rem 1rem;
+    /* border-radius圆角 */
+    border-radius: 0.5rem;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active{
+    color:#ff1b68;
+    background: white;
+    /* 覆盖上面的border-bottom: 2px solid white; */
+    border:none;
+
+}
+
+
+
+
+
+/* 
+
+
+一.h1~h6标签：有默认margin（top,bottom且相同）值，没有默认padding值。
+
+
+二.dl标签：有默认margin（top,bottom且相同）值，没有默认padding值。
+
+在Chrome,Firefox,Safari,Opera,Maxthon,IE8.0中：margin:12px 0px;
+
+在IE6.0,7.0中：margin:19px 0px;
+
+dd标签有默认margin-left：40px;(在所有上述浏览器中)。
+
+三.ol,ul标签：有默认margin-（top,bottom且相同）值，有默认padding-left值
+
+在Chrome,Firefox,Safari,Opera,Maxthon,IE8.0中：margin:12px 0px;
+
+在IE6.0,7.0中：margin:19px 0px;
+
+默认padding-left值：在Chrome,Firefox,Safari,Opera,Maxthon,IE8.0中都是padding-left：40px;在IE6.0,7.0中没有默认padding值，因为ol,ul标签的边框不包含序号。
+
+四.table标签没有默认的margin,padding值；th,td标签没有默认的margin值，有默认的padding值。
+
+在Chrome,Firefox,Safari,Opera,Maxthon中：padding：1px;
+
+在IE8.0中：padding：0px 1px 1px;
+
+在IE7.0中：padding：0px 1px；
+
+相同内容th的宽度要比td宽，因为th字体有加粗效果。
+
+五.form标签在Chrome,Firefox,Safari,Opera,Maxthon,IE8.0中没有默认的margin,padding值，但在IE6.0,7.0中有默认的margin：19px 0px;
+
+六.p标签有默认margin(top,bottom)值,没有默认padding值。
+
+在Chrome,Firefox,Safari,Opera,Maxthon,IE8.0中：margin:12px 0px;
+
+在IE6.0,7.0中：margin:19px 0px;
+
+七.textarea标签在上述所有浏览器中：margin:2px；padding:2px；
+
+八.select标签在Chrome,Safari,Maxthon中有默认的margin：2px；在Opera,Firefox,IE6.0,7.0,8.0没有默认的margin值。
+
+option标签只有在firefox中有默认的padding-left：3px；
+
+九.div nav li没有默认margin跟padding
+
+
+ */
+
+
+ /* Choose Your Plan */
+ .plan{
+     background:#d5ffdc;
+     /* 
+        text-align运用在块级元素中，使其中的文本对齐。
+        事实上这句话的意思是运用在块级元素中text-align会使其包含行内元素对齐。
+      */
+     text-align: center;
+     padding: 1rem;
+     margin: 0.5rem;
+     /* 先写好布局然后再定宽高 */
+     /* 
+        这个30%是相对父容器来说的
+        article的父容器是div,因为div的宽是page size的,
+        div的page size 是 父容器section id="plans"给的,
+        因为section id="plans"的宽是page size的,
+        section的page size 是main 给的,又因为main是page size
+        所有30%是page size的30%
+      */
+     width: 30%;
+     vertical-align: middle;
+ }
+
+ .plan_list{
+     width: 80%;
+     /* 让<div class="plan_list"> 在 <section id="plans">里面居中 */
+     margin:auto;
+     /* 让<article class="plan"> 在 <div class="plan_list">里面居中 因为article已经变成了inline element了 */
+     text-align: center;
+ }
+
+
+
+ .plan--highlighted{
+    background: #086826;
+    color:white;
+    /*box-shadow 添加阴影  rgba(0,0,0,0.3) 是颜色调节*/
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    
+}
+
+.plan__annotation{
+    background: white;
+    color: #19b84c;
+    padding: 0.5rem;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    border-radius: 8px;
+}
+
+.plan_features{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+}
+
+@media(min-width:40rem){
+    .plan{
+        display: inline-block;
+    }
+}
+
+.plan_features li{
+    margin: 0.5 0;
+}
+
+.plan_title{
+    color:#0e4f1f
+}
+
+.plan_price{
+    color:#858585
+}
+
+.plan--highlighted .plan_title{
+    color:white;
+}
+.plan--highlighted .plan_price{
+    color:black;
+}
+
+.button{
+    background:#0e4f1f;
+    color:white;
+
+    /* 注意button有浏览器自带的font，border padding */
+    /* 这里要重新覆盖一下，inherit是继承这个网页所用的font */
+    font:inherit;
+    border:1.5px solid #0e4f1f;
+    padding:0.5rem;
+
+    border-radius:0.5rem;
+    font-weight: bold;
+    /* 鼠标光标移动到按钮上就会变成手指 */
+    cursor: pointer;
+}
+
+.button:hover,
+.button:active{
+    background:white;
+    color:#0e4f1f;
+}
+
+/* button 的focus属性默认有个outline 边框*/
+.button:focus{
+    outline: none;
+}
+
+
+/* features */
+#key-features{
+    background: #ff1b68;
+    margin-top: 5rem;
+    padding: 16px;
+}
+
+#key-features .section-title{
+    color: white;
+    /* 如果子的margin超出了父的范围，那么父也要有padding才行。所以才有了padding: 16px; padding也可以为1px*/
+    margin:2rem;
+}
+
+.key-features__list{
+    /* 去掉ul的margin跟padding */
+    margin:0;
+    padding:0;
+    /* 去掉list的各种默认属性 */
+    list-style: none;
+    /* text-align: center不应该写在 .key-feature里面 */
+    text-align: center;
+}
+.key-feature{
+    display: inline-block;
+    width:30%;
+    vertical-align:top;
+}
+.key-feature__description{
+    font-weight: bold;
+    color:white;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.key-feature_image{
+    background: #ffcede;
+    width: 128px;
+    height: 128px;
+    border: 2px solid #424242;
+    /* 画一个完整得圆是这样画的 border-radius: 50%; */
+    border-radius: 50%;
+    /* 让块元素div居中 */
+    margin:auto;
+    padding:17px
+}
+
+
+/* footer */
+.main-footer{
+    background:black;
+    padding:32px;
+    margin-top: 48px;
+}
+.main-footer__links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.main-footer__link{
+    display: inline-block;
+    margin: 0 16px;
+}
+.main-footer__link a{
+    color:white;
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active{
+    color:#ccc ;
+}
+
+/* modal */
+.modal{
+    position: fixed;
+    display: none;
+    z-index: 200;
+    left: 30%;
+    top:20%;
+    /* 不用特别指定height，height是自适应的 */
+    width: 40%;
+    background: white;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+}
+
+
+
+.modal__title {
+    text-align: center;
+    margin: 0 0 1rem 0;
+  }
+  
+  .modal__actions {
+    text-align: center;
+  }
+  
+  .modal__action {
+    border: 1px solid #0e4f1f;
+    background: #0e4f1f;
+    text-decoration: none;
+    color: white;
+    font: inherit;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .modal__action:hover,
+  .modal__action:active {
+    background: #2ddf5c;
+    border-color: #2ddf5c;
+  }
+  
+  .modal__action--negative {
+    background: red;
+    border-color: red;
+  }
+  
+  .modal__action--negative:hover,
+  .modal__action--negative:active {
+    background: #ff5454;
+    border-color: #ff5454;
+  }

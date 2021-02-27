@@ -1,0 +1,224 @@
+* {
+    /* 所有的盒子元素的长跟宽是包含了padding跟border的 */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+   /* body有默认的margin */
+    margin: 0;
+}
+
+
+
+
+.main-header{
+    width:100%;
+    background: #2ddf5c;
+    padding:0.5rem 1rem;
+    /* 固定header的navigation bar,以后这样写就行了 */
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+.main-header__brand{
+    /* 去掉下划线 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color:black;
+    display: inline-block;
+    height: 2rem;
+    vertical-align: middle;
+}
+
+.main-header__brand img{
+    /* 
+        100%表示的是container Atag的高 但是img并不会在意a tag的高和宽
+        在Atag(main-header__brand class)里面添加 display:inline-block;
+        img tag就会在意Atag的高跟宽了
+    */
+    height:100%
+}
+
+.main-nav__item{
+
+    /* inline-block要素はinline要素のようなものだ。だが、widthとheight,margin,paddingを持つ事ができる */
+    display:inline-block;
+    margin:0 1rem;
+}
+
+.main-nav__items{
+    /* 去掉ul的margin跟padding */
+    margin:0;
+    padding:0;
+    /* 去掉list的各种默认属性 */
+    list-style-type:none;
+}
+
+.main-header>div{
+    display: inline-block;
+    /* 垂直对齐 */
+    vertical-align: middle;
+}
+.main-header>nav{
+    display: inline-block;
+    /* 垂直对齐 */
+    vertical-align: middle;
+    /* inline element里面的内容会被当做text，所以就可以用text-align来对齐了 */
+    text-align: right;
+    /* uHost的宽度是68.55 所以我再这里减去75。减号前后必须要有空格*/
+    /* width:calc(100% - 75px);  */
+    /* 又添加了一个humberger图标 所以要减去 130px */
+    width:calc(100% - 130px); 
+}
+
+.main-nav__item a,
+.mobile-nav__item a{
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+    padding:3px 0;
+    
+}
+
+/* .main-nav__items a:hover{ */
+    /* 滑过atag的时候 */
+    /* color:white; */
+/* } */
+/* .main-nav__items a:active{ */
+    /* 点击atag的时候 */
+    /* color:white; */
+/* } */
+
+.main-nav__items a:hover,
+.main-nav__items a:active{
+    color:white;
+    /*因为文字跟border的线太近了，所以要使用padding:3px 0; */
+    border-bottom: 2px solid white;
+}
+
+.main-nav__item--cta a,
+.mobile-nav__item--cta a {
+    color:white;
+    background: #ff1b68;
+    padding:0.5rem 1rem;
+    /* border-radius圆角 */
+    border-radius: 0.5rem;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active,
+.mobile-nav__item--cta a:hover,
+.mobile-nav__item--cta a:active{
+    color:#ff1b68;
+    background: white;
+    /* 覆盖上面的border-bottom: 2px solid white; */
+    border:none;
+
+}
+
+/* button 的focus属性默认有个outline 边框*/
+.button:focus{
+    outline: none;
+}
+
+
+
+/* footer */
+.main-footer{
+    background:black;
+    padding:2rem;
+    margin-top: 3rem;
+}
+.main-footer__links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.main-footer__link{
+    display: inline-block;
+    margin: 0 1rem;
+}
+.main-footer__link a{
+    color:white;
+    text-decoration: none;
+}
+
+.main-footer__link a:hover,
+.main-footer__link a:active{
+    color:#ccc ;
+}
+
+.backdrop {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+}
+
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 80%;
+    height: 100vh;
+  }
+  
+  .mobile-nav__items {
+    width: 90%;
+    height: 100%;
+    list-style: none;
+    margin: 10% auto;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .mobile-nav__item {
+    margin: 1rem 0;
+  }
+  
+  .mobile-nav__item a {
+    font-size: 1.5rem;
+  }
+
+
+
+  /* humberger toggle button */
+  .toggle-button {
+    width: 3rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    vertical-align: middle;
+  }
+  
+  .toggle-button:focus {
+    outline: none;
+  }
+  
+  .toggle-button__bar {
+    width: 100%;
+    height: 0.2rem;
+    background: black;
+    display: block;
+    margin: 0.6rem 0;
+  }
+
+  .open{
+      /* 当 display: block  跟display:none　同时存在的时候使用 display: block 就是！important的意思 */
+      display: block !important;
+  }

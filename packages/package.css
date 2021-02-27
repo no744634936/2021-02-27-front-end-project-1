@@ -1,0 +1,140 @@
+main{
+    padding-top: 2rem;
+}
+
+.package{
+    border:3px solid black;
+    border-left: none;
+    width:50%;
+    margin: 1rem 0;
+    position: relative;
+}
+
+.package a{
+    text-decoration: none;
+    color:inherit;
+    /* 将a tag 变成block元素，这样就可以使用margin跟padding了 */
+    display: block;
+    padding:2rem;
+}
+
+.package_subtitle{
+    color:#979797;
+}
+
+.package_info{
+    border:2px solid black;
+    width: 80%;
+    padding:1rem;
+    font-size: 1.2rem;
+    color: #0e4f1f;
+    background: white;
+}
+
+#plus{
+    background: rgba(213,255,220,0.95);
+}
+
+
+/* 
+    id selector 的优先级很高，
+    高于tag，class，所以 当
+    .package:hover,
+    .package:active
+    的时候
+    border-left 不会变成红色
+    要做的是写上
+    #free:hover,
+    #free:active
+*/
+#free{
+    background: rgba(234,252,237,0.95);
+    /* 漂浮 */
+    float:right;
+    /* 左侧有border 右侧没有border */
+    border-right: none;
+    border-left: 3px solid black;
+
+}
+#free:hover,
+#free:active{
+    border-left-color: #ff5454;
+}
+
+/* 
+    inline element 使用text-align可以左右对齐，
+    block element左右对齐可以使用float
+    最好用flex box来做
+    这里我用了 float:right;
+    但是 #free的后面要写上  .clearfix{clear:both}
+    表示.clearfix之后的盒子都不要动
+    这种写法很烂
+ */
+ .clearfix{
+    clear:both
+}
+
+
+#premium{
+    background: rgba(14,79,31,0.95);
+}
+#premium .package_title{
+    color:white;
+}
+#premium .package_subtitle{
+    color:#bbb;
+}
+
+/* 注意border变红是package的所以不能写成 .package a:hover, */
+.package:hover,
+.package:active{
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.5);
+    border-color: #ff5454;
+}
+
+
+/* 背景图片的添加方法*/
+.background{
+    background: url("../images/plans-background.jpg") center/cover;
+    /* 给图片加个滤镜 */
+    filter: grayscale(50%);
+    /* 
+    width: 100%;
+    height:100%; 
+    */
+    width: 100vw;
+    height:100vh;
+    position: fixed;
+    /* z轴方向上的元素配置，一个元素如果不设置z-index就是0 */
+    z-index:-1;
+}
+
+/* 
+当不知道如何使用position的时候，可以先像这样写，然后再更改
+.package_badge{
+    position: fixed;
+    top:0;
+    left:0;
+    margin:0;
+
+} 
+*/
+
+/* position:fixed 属性是相对于整个网页，veiwport（body）来说的，。 */
+/* 如果最近的父元素有position属性 那么子元素的position: absolute;就是相对于父元素来说的 */
+/* 如果最近的父元素没有position属性 那么子元素的position: absolute;就是相对于 html来说的 */
+/* 最近的父元素.package 有 position: relative;*/
+/* relative 属性的元素会偏移某个距离。但是该元素仍保持其未定位前的形状，它原本所占的空间仍保留。”，它是相对于自己来定位的，例如：#main{position:relative;top:-50px;},这时#main会在相对于它原来的位置上移50px。  */
+.package_badge{
+    /* 定在这里别动 */
+    position: absolute;
+    top:0;
+    right:0px;
+    margin:20px;
+
+    font-size:0.8rem;
+    color:white;
+    background-color: #ff5454;
+    padding:0.5rem;
+
+} 
